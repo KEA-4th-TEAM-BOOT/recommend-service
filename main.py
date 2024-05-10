@@ -1,12 +1,13 @@
 import os
 import uvicorn
+import csv
 from fastapi import FastAPI
 
 import pymongo
 from bson import ObjectId
 
 # mongodb connection 연결
-connection = pymongo.MongoClient("mongodb://root:@localhost:27017/")
+connection = pymongo.MongoClient("mongodb://root:1111@172.16.226.46:27017/")
 
 # 데이터베이스를 찾는다.
 database = connection["recommend_test"]
@@ -27,7 +28,19 @@ async def root():
         # ObjectId를 문자열로 변환하여 직렬화
         document["_id"] = str(document["_id"])
         result.append(document)
+
+    fieldnames = ['_id', 'content']
+
+    f = open("data.csv", "w")
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerows(result)
+
+    f.close()
+
     return result
 
+
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
