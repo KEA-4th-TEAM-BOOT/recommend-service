@@ -9,15 +9,13 @@ app = FastAPI()
 
 port = int(os.environ.get("RECOMMEND_PORT", 8001))
 
-origins = [
-    "*",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,  # cross-origin request에서 cookie를 포함할 것인지 (default=False)
-    allow_methods=[""],     # cross-origin request에서 허용할 method들을 나타냄. (default=['GET']
+    allow_methods=["*"],     # cross-origin request에서 허용할 method들을 나타냄. (default=['GET']
     allow_headers=["*"],     # cross-origin request에서 허용할 HTTP Header 목록
 )
 
