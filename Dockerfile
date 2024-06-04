@@ -16,5 +16,8 @@ COPY . .
 # 컨테이너 외부로 포트 8001을 열어둡니다.
 EXPOSE 8001
 
+# 환경변수 설정
+ENV RECOMMEND_PORT=8001
+
 # 컨테이너가 시작될 때 실행할 명령어를 설정합니다.
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
