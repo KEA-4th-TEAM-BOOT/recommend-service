@@ -6,3 +6,4 @@ boto3
 pydantic
 beautifulsoup4
 sqlalchemy
+requests

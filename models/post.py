@@ -1,10 +1,22 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from pydantic import BaseModel
+from typing import Optional, Any
+from typing import List
+from datetime import datetime
 
-Base = declarative_base()
-
-class Post(Base):
-    __tablename__ = 'posts'
-    post_id = Column(Integer, primary_key=True)
-    user_id = Column(Integer)
-    content = Column(String)
+class Post(BaseModel):
+    id: int
+    userLink: str
+    personalPostId: Optional[int]
+    postVoiceFileUrl: Optional[str]
+    categoryId: Optional[int]
+    subCategoryId: Optional[int]
+    subject: str
+    title: str
+    content: str
+    thumbnail: Optional[str]
+    thumbnailImageUrl: Optional[str]
+    accessibility: str
+    hitCnt: Optional[int]
+    likeCnt: Optional[int]
+    createdTime: Optional[datetime]
+    comments: Any
