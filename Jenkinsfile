@@ -6,7 +6,7 @@ pipeline {
         GITHUB_URL = 'https://github.com/KEA-4th-TEAM-BOOT/recommend-service.git'
         APP_VERSION = '1.1.1'
         BUILD_DATE = sh(script: "echo `date +%y%m%d.%d%H%M`", returnStdout: true).trim()
-        TAG = "${APP_VERSION}"
+        TAG = "${APP_VERSION}-${BUILD_DATE}"
         IMAGE_NAME = 'voda-recommend'
         SERVICE_NAME = 'recommend'
         ECR_REPOSITORY = 'voda-recommend'
