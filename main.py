@@ -24,7 +24,15 @@ app.add_middleware(
 app.include_router(main.api_router)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+
+@app.get("/health/liveness")
+async def liveness():
+    return {"status": "alive"}
+
+@app.get("/health/readiness")
+async def readiness():
+    return {"status": "ready"}
 
 @app.get("/")
 async def root():
