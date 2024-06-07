@@ -1,14 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from dotenv import load_dotenv
 from database.recommend import get_db
 from crud.elastic import get_posts
 from crud.like import make_user
 from crud.recommend import upsert_similarity
 from core.clean import clean_data
 from core.inference import request_endpoint
-
-load_dotenv()
 
 router = APIRouter()
 
