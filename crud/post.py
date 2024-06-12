@@ -40,3 +40,4 @@ def get_recommend_post(post_ids: List[int]) -> List[Post]:
             raise Exception(f"HTTP Error: {response.status_code}")
     return posts
 
+
