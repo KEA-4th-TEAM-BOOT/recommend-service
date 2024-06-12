@@ -23,9 +23,9 @@ def get_posts() -> List[Post]:
         json_response = response.json()
         hits = json_response['hits']['hits']
         posts = [Post(
-            post_id=hit['_source']['payload']['post_id'],
-            user_id=hit['_source']['payload']['user_id'],
-            content=hit['_source']['payload']['content'])
+            post_id=hit['_source']['post_id'],
+            user_id=hit['_source']['user_id'],
+            content=hit['_source']['content'])
             for hit in hits]
         return posts
     else:
